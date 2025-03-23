@@ -1,0 +1,9 @@
+- Mongoose
+- Express
+- Express-ejs-layouts
+- ejs
+- methodOverride
+- express-validator
+- express-session
+- cookie-parser
+- connect-flash
