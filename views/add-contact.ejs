@@ -1,0 +1,38 @@
+<style>
+    .form-control{
+        width: 400px;
+        }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="cold-md-6">
+            <h2>Tambah Data Kontak</h2>
+            <% if (errors.length > 0) { %>
+                <div class="form-control">
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <% errors.forEach(e => {%>
+                                <li><%= e.msg %></li>
+                           <% }); %>
+                        </ul>
+                      </div>
+                </div>
+            <% } %>
+            <form method="post" action="/contact">
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama : </label>
+                  <input type="text" class="form-control" id="nama" name="nama" required>
+                </div>
+                <div class="mb-3">
+                  <label for="Email" class="form-label">Email : </label>
+                  <input type="email" class="form-control" id="Email" name="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="noHp" class="form-label">No Hp : </label>
+                  <input type="text" class="form-control" id="noHp" name="noHp" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambahkan Kontak </button>
+              </form>
+        </div>
+    </div>
+</div>

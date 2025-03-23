@@ -1,0 +1,46 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Daftar Kontak</h2>
+            <a href="/contact/add-contact" class="btn btn-primary mb-2">Tambah Data Contact</a>
+            <% if (msg.length !== 0) { %>
+              <div class="alert alert-success" role="alert">
+                <%= msg %>
+              </div>
+            <% } %>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">No Hp</th>
+                    <th scope="col"><center>Aksi</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if (contacts.length === 0) { %>
+                    <div class="alert alert-warning" role="alert">
+                      Anda belum memiliki kontak yang disimpan
+                    </div>
+                  <% }else{ let angka =  1 %>
+                  <% contacts.forEach((c, i) => {  %>
+                  <tr>
+                    <th scope="row"><%= angka++ %></th>
+                    <td><%= c.name  %></td>
+                    <td><%= c.phone %></td>
+                    <td><a href="/contact/<%=c.name%>" class="btn btn-success badge rounded-pill"><i class="bi-info-circle"></i> detail</a>
+                        <a href="/contact/edit/<%=c.name%>" class="btn btn-info badge" >Ubah</a>
+                        <form method="POST" action="/contact?_method=DELETE" class="d-inline">
+                          <input type="hidden" name="_id" value="<%=c._id%>">
+                          <button type="submit" class="btn btn-danger badge" onclick="return confirm('Yakin??')">Hapus</button>
+                        </form>
+                    </td>
+                  
+                  </tr>
+               <% }); %>
+               <% } %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
